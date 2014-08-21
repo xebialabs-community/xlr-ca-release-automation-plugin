@@ -1,1 +1,12 @@
 language: java
+notifications:
+  hipchat:
+    rooms:
+      secure: WhJdfrXKMwMAhiJrNiTsJolkIGLUg33YdeKt62/dfduwBswq7HcpoVW3pKFPIJZov8378UleFDyOi/godjgM8ngi8Y8Zbnk/3+DsvlLG0hbbElZMtbVGm/GmFWq5eYBXxR6s1RjlrTk8csNQTnb+qe0x6GUj3g33f/xZ4vDNmZc=
+deploy:
+  provider: releases
+  api_key:
+    secure: HkiGKhKcqT96idPXzSwAt6NNv/ZEXSioq1uvVCOqPlSytk2nyAiYMw45L4I/Ha543kyFHANfD2AiiFzU8hzZfqdaPRMT5hU+gG6tKf12mZn/jXkpvS/z5Uni2Awtb/eE/rixb46hcilBpVgjKon3ufVAmmZnNLdL5+Rj+yG+wqo=
+  file: build/libs/xlr-calisa-plugin-1.0.jar
+  on:
+    repo: xebialabs-community/xlr-calisa-plugin

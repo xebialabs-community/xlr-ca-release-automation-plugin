@@ -45,7 +45,7 @@
         <property name="version" category="input" label="Version" required="true" />
         <property name="description" category="input" label="Description" required="false" />
         <property name="doStepsValidation" category="input" label="Do steps validation" required="true" kind="boolean" />
-        <property name="props" category="input" label="Set your properties" required="true" size="large" />
+        <property name="props" category="input" label="Set your properties" required="false" size="large" description="Comma separated list of &quot;key&quot;:&quot;value&quot; pairs"/>
 
         <property name="releaseId" category="output"/> 
         <property name="releaseDescription" category="output"/> 

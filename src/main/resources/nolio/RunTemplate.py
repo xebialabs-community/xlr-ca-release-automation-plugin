@@ -17,10 +17,16 @@ nolioUrl = nolioServer['url']
 
 credentials = CredentialsFallback(nolioServer, username, password).getCredentials()
 
-content = """
-{"environment":"%s","template":"%s","release":"%s","application":"%s","version":"%s","doStepsValidation":"%s","releaseType":"%s","properties":{%s}}
-""" % (environmentName, templateName, releaseName, applicationName, version, str(doStepsValidation).lower(), releaseType, props)
 
+# No properties (default)
+content = """
+{"environment":"%s","template":"%s","release":"%s","application":"%s","version":"%s","doStepsValidation":"%s","releaseType":"%s"}
+""" % (environmentName, templateName, releaseName, applicationName, version, str(doStepsValidation).lower(), releaseType)
+
+# Properties have been defined.
+if props:
+    content = """{"environment":"%s","template":"%s","release":"%s","application":"%s","version":"%s","doStepsValidation":"%s","releaseType":"%s","properties":{%s}}
+    """ % (environmentName, templateName, releaseName, applicationName, version, str(doStepsValidation).lower(), releaseType, props)
 
 print "Sending content %s" % content
 

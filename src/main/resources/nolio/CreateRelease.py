@@ -35,6 +35,7 @@ if nolioResponse.status == RELEASE_CREATED_STATUS:
     releaseResult = data.get('result')
     if releaseResult == False:
         print "Failed to create release in Nolio at %s." % nolioUrl
+        print "Received description: %s" % releaseDescription
         nolioResponse.errorDump()
         sys.exit(1)
     print "Created %s in Nolio at %s." % (releaseId, nolioUrl)

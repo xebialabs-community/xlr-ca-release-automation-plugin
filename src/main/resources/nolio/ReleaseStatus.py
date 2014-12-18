@@ -26,9 +26,11 @@ print "Sending content %s" % content
 
 nolioAPIUrl = nolioUrl + '/datamanagement/a/api/release-status'
 releaseStatus = ""
+trial = 0
 
-while (releaseStatus == "" or releaseStatus != "Finished"):
+while ((releaseStatus == "" or releaseStatus != "Finished") and trial < numberOfTrials):
     nolioResponse = XLRequest(nolioAPIUrl, 'POST', content, credentials['username'], credentials['password'], 'application/json').send()
+    trial += 1
 
     if nolioResponse.status == RELEASE_STATUS:
         data = json.loads(nolioResponse.read())
@@ -46,4 +48,9 @@ while (releaseStatus == "" or releaseStatus != "Finished"):
         print "Failed to check release status in Nolio at %s." % nolioUrl
         nolioResponse.errorDump()
         sys.exit(1)
-    time.sleep(10)    
+    time.sleep(pollingInterval)
+
+# This means we reached max number of trials.
+if releaseStatus == "":
+    print "Failed to check release status in Nolio at %s." % nolioUrl
+    sys.exit(1)

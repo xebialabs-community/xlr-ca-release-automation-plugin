@@ -25,25 +25,35 @@ content = """
 print "Sending content %s" % content
 
 nolioAPIUrl = nolioUrl + '/datamanagement/a/api/release-status'
+if version2:
+    nolioAPIUrl = nolioUrl + '/datamanagement/a/api/v2/release-status'
 releaseStatus = ""
 trial = 0
 
-while ((releaseStatus == "" or releaseStatus != "Finished") and trial < numberOfTrials):
+while releaseStatus in ("Active", "Running", "") and trial < numberOfTrials:
     nolioResponse = XLRequest(nolioAPIUrl, 'POST', content, credentials['username'], credentials['password'], 'application/json').send()
     trial += 1
 
     if nolioResponse.status == RELEASE_STATUS:
         data = json.loads(nolioResponse.read())
         releaseId = data.get('id')
-        releaseStatus = data.get('status')
+        if version2:
+            releaseStatus = data.get('releaseStatus')
+        else:
+            releaseStatus = data.get('status')
         releaseDescription = data.get('description')
         releaseResult = data.get('result')
+        print "Checking %s in Nolio at %s." % (releaseId, nolioUrl)
+        print "Description: %s" % (releaseDescription)
         if releaseResult == False:
             print "Failed to check release status in Nolio at %s." % nolioUrl
             print "Received description: %s" % releaseDescription
             nolioResponse.errorDump()
             sys.exit(1)
-        print "Checking %s in Nolio at %s." % (releaseId, nolioUrl)
+        if releaseStatus in ("Failed", "Canceled"):
+            sys.exit(1)
+        if releaseStatus in ("Succeeded", "Finished"):
+            sys.exit(0)
     else:
         print "Failed to check release status in Nolio at %s." % nolioUrl
         nolioResponse.errorDump()
@@ -51,6 +61,5 @@ while ((releaseStatus == "" or releaseStatus != "Finished") and trial < numberOf
     time.sleep(pollingInterval)
 
 # This means we reached max number of trials.
-if releaseStatus == "":
-    print "Failed to check release status in Nolio at %s." % nolioUrl
-    sys.exit(1)
+print "Failed to check release status in Nolio at %s." % nolioUrl
+sys.exit(1)

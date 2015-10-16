@@ -17,25 +17,32 @@ nolioUrl = nolioServer['url']
 
 credentials = CredentialsFallback(nolioServer, username, password).getCredentials()
 
+if appendTimestampToRelease:
+    if releaseName is None: 
+        finalReleaseName = time.strftime("%Y%m%d-%H%M%S")
+    else:
+        finalReleaseName = releaseName + " " + time.strftime("%Y%m%d-%H%M%S")
+else:
+    finalReleaseName = releaseName
 
 # No properties (default)
 content = """
 {"environment":"%s","template":"%s","release":"%s","application":"%s","version":"%s","doStepsValidation":"%s","releaseType":"%s"}
-""" % (environmentName, templateName, releaseName, applicationName, version, str(doStepsValidation).lower(), releaseType)
+""" % (environmentName, templateName, finalReleaseName, applicationName, version, str(doStepsValidation).lower(), releaseType)
 
 # Properties have been defined.
 if props:
     content = """{"environment":"%s","template":"%s","release":"%s","application":"%s","version":"%s","doStepsValidation":"%s","releaseType":"%s","properties":{%s}}
-    """ % (environmentName, templateName, releaseName, applicationName, version, str(doStepsValidation).lower(), releaseType, props)
+    """ % (environmentName, templateName, finalReleaseName, applicationName, version, str(doStepsValidation).lower(), releaseType, props)
 
 print "Sending content %s" % content
 
-nolioAPIUrl = nolioUrl + '/datamanagement/a/api/run-template'
-
-nolioResponse = XLRequest(nolioAPIUrl, 'POST', content, credentials['username'], credentials['password'], 'application/json').send()
+nolioContext = '/datamanagement/a/api/run-template/'
+httpRequest = HttpRequest(nolioServer, credentials['username'], credentials['password'])
+nolioResponse = httpRequest.post(nolioContext, content, contentType = 'application/json')
 
 if nolioResponse.status == RELEASE_CREATED_STATUS:
-    data = json.loads(nolioResponse.read())
+    data = json.loads(nolioResponse.getResponse())
     releaseId = data.get('id')
     releaseDescription = data.get('description')
     releaseResult = data.get('result')

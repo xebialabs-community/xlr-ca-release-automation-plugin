@@ -19,6 +19,7 @@
         <property name="templateName" category="input" label="Template Name" required="true" />
         <property name="applicationName" category="input" label="Application Name" required="true" />
         <property name="releaseName" category="input" label="Release Name" required="true" />
+        <property name="appendTimestampToRelease" category="input" label="Append timestamp to release" required="true" kind="boolean" />
         <property name="environmentName" category="input" label="Environment Name" required="true" />
         <property name="releaseType" category="input" label="Release Type" required="true" />
         <property name="version" category="input" label="Version" required="true" />
@@ -40,6 +41,8 @@
         <property name="templateName" category="input" label="Template Name" required="true" />
         <property name="applicationName" category="input" label="Application Name" required="true" />
         <property name="releaseName" category="input" label="Release Name" required="true" />
+        <property name="appendTimestampToRelease" category="input" label="Append timestamp to release" required="true" kind="boolean" />
+
         <property name="environmentName" category="input" label="Environment Name" required="true" />
         <property name="releaseType" category="input" label="Release Type" required="true" />
         <property name="version" category="input" label="Version" required="true" />

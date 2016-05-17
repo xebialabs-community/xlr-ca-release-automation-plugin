@@ -29,7 +29,7 @@ if version2:
 releaseStatus = ""
 trial = 0 
 
-while releaseStatus in ("Active", "Running", "Open", "") and trial < numberOfTrials:
+while releaseStatus in ("Active", "Running", "Open", "") and (trial < numberOfTrials or numberOfTrials == 0):
     httpRequest = HttpRequest(nolioServer, credentials['username'], credentials['password'])
     nolioResponse = httpRequest.post(nolioContext, content, contentType = 'application/json')
 

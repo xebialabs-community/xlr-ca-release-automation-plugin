@@ -7,7 +7,7 @@ deploy:
   provider: releases
   api_key:
     secure: HkiGKhKcqT96idPXzSwAt6NNv/ZEXSioq1uvVCOqPlSytk2nyAiYMw45L4I/Ha543kyFHANfD2AiiFzU8hzZfqdaPRMT5hU+gG6tKf12mZn/jXkpvS/z5Uni2Awtb/eE/rixb46hcilBpVgjKon3ufVAmmZnNLdL5+Rj+yG+wqo=
-  file: build/libs/xlr-calisa-plugin-1.2.1.jar
+  file: build/libs/xlr-calisa-plugin-1.2.3.jar
   skip_cleanup: true
   on:
     all_branches: true

@@ -1,16 +1,16 @@
 # Preface #
 
-This document describes the functionality provided by the XL Release CA Lisa (Nolio) plugin.
+This document describes the functionality provided by the XL Release CA Release Automation plugin.
 
-See the **XL Release Reference Manual** for background information on XL Release and release concepts.
+See [docs.xebialabs.com](https://docs.xebialabs.com/xl-release) for background information on XL Release and release concepts.
 
 # Overview #
 
-The xlr-calisa-plugin is a XL Release plugin that allows to execute a deployment using CA Lisa (Nolio).
+The xlr-calisa-plugin is a XL Release plugin that allows to execute a deployment using CA Release Automation.
 
 ## Types ##
 
 + Create Release
 + Run Template
 + Run Release
-+ Check Release Status 
++ Check Release Status

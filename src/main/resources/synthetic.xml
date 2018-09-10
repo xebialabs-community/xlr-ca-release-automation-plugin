@@ -6,90 +6,118 @@
     FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 
 -->
-<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd"
+           xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <type type="nolio.CreateRelease" extends="xlrelease.PythonScript">
-        <property name="scriptLocation" default="nolio/CreateRelease.py" hidden="true" />
-        <property name="iconLocation" default="nolio/nolio.png" hidden="true" />
+        <property name="scriptLocation" default="nolio/CreateRelease.py" hidden="true"/>
+        <property name="iconLocation" default="nolio/nolio.png" hidden="true"/>
 
         <property name="nolioServer" category="input" label="Server" referenced-type="nolio.Server" kind="ci"/>
-        <property name="username" category="input" label="username" required="true" />
-        <property name="password" password="true" category="input" required="true" />
+        <property name="username" category="input" label="username" required="true"/>
+        <property name="password" password="true" category="input" required="true"/>
 
-        <property name="templateName" category="input" label="Template Name" required="true" />
-        <property name="applicationName" category="input" label="Application Name" required="true" />
-        <property name="releaseName" category="input" label="Release Name" required="true" />
-        <property name="appendTimestampToRelease" category="input" label="Append timestamp to release" required="true" kind="boolean" />
-        <property name="environmentName" category="input" label="Environment Name" required="true" />
-        <property name="releaseType" category="input" label="Release Type" required="true" />
-        <property name="version" category="input" label="Version" required="true" />
-        <property name="doStepsValidation" category="input" label="Do steps validation" required="true" kind="boolean" />
+        <property name="templateName" category="input" label="Template Name" required="true"/>
+        <property name="applicationName" category="input" label="Application Name" required="true"/>
+        <property name="releaseName" category="input" label="Release Name" required="true"/>
+        <property name="appendTimestampToRelease" category="input" label="Append timestamp to release" required="true"
+                  kind="boolean"/>
+        <property name="environmentName" category="input" label="Environment Name" required="true"/>
+        <property name="releaseType" category="input" label="Release Type" required="true"/>
+        <property name="version" category="input" label="Version" required="true"/>
+        <property name="doStepsValidation" category="input" label="Do steps validation" required="true" kind="boolean"/>
 
-        <property name="releaseId" category="output"/> 
-        <property name="releaseDescription" category="output"/> 
-		<property name="releaseResult" category="output"/>
+        <property name="releaseId" category="output"/>
+        <property name="releaseDescription" category="output"/>
+        <property name="releaseResult" category="output"/>
     </type>
 
     <type type="nolio.RunTemplate" extends="xlrelease.PythonScript">
-        <property name="scriptLocation" default="nolio/RunTemplate.py" hidden="true" />
-        <property name="iconLocation" default="nolio/nolio.png" hidden="true" />
+        <property name="scriptLocation" default="nolio/RunTemplate.py" hidden="true"/>
+        <property name="iconLocation" default="nolio/nolio.png" hidden="true"/>
 
         <property name="nolioServer" category="input" label="Server" referenced-type="nolio.Server" kind="ci"/>
-        <property name="username" category="input" label="username" required="true" />
-        <property name="password" password="true" category="input" required="true" />
-        
-        <property name="templateName" category="input" label="Template Name" required="true" />
-        <property name="applicationName" category="input" label="Application Name" required="true" />
-        <property name="releaseName" category="input" label="Release Name" required="true" />
-        <property name="appendTimestampToRelease" category="input" label="Append timestamp to release" required="true" kind="boolean" />
+        <property name="username" category="input" label="username" required="true"/>
+        <property name="password" password="true" category="input" required="true"/>
 
-        <property name="environmentName" category="input" label="Environment Name" required="true" />
-        <property name="releaseType" category="input" label="Release Type" required="true" />
-        <property name="version" category="input" label="Version" required="true" />
-        <property name="description" category="input" label="Description" required="false" />
-        <property name="doStepsValidation" category="input" label="Do steps validation" required="true" kind="boolean" />
-        <property name="props" category="input" label="Set your properties" required="false" size="large" description="Comma separated list of &quot;key&quot;:&quot;value&quot; pairs"/>
+        <property name="templateName" category="input" label="Template Name" required="true"/>
+        <property name="applicationName" category="input" label="Application Name" required="true"/>
+        <property name="releaseName" category="input" label="Release Name" required="true"/>
+        <property name="appendTimestampToRelease" category="input" label="Append timestamp to release" required="true"
+                  kind="boolean"/>
 
-        <property name="releaseId" category="output"/> 
-        <property name="releaseDescription" category="output"/> 
+        <property name="environmentName" category="input" label="Environment Name" required="true"/>
+        <property name="releaseType" category="input" label="Release Type" required="true"/>
+        <property name="version" category="input" label="Version" required="true"/>
+        <property name="description" category="input" label="Description" required="false"/>
+        <property name="doStepsValidation" category="input" label="Do steps validation" required="true" kind="boolean"/>
+        <property name="props" category="input" label="Set your properties" required="false" size="large"
+                  description="Comma separated list of &quot;key&quot;:&quot;value&quot; pairs"/>
+
+        <property name="releaseId" category="output"/>
+        <property name="releaseDescription" category="output"/>
         <property name="releaseResult" category="output"/>
     </type>
 
     <type type="nolio.RunRelease" extends="xlrelease.PythonScript">
-        <property name="scriptLocation" default="nolio/RunRelease.py" hidden="true" />
-        <property name="iconLocation" default="nolio/nolio.png" hidden="true" />
+        <property name="scriptLocation" default="nolio/RunRelease.py" hidden="true"/>
+        <property name="iconLocation" default="nolio/nolio.png" hidden="true"/>
 
         <property name="nolioServer" category="input" label="Server" referenced-type="nolio.Server" kind="ci"/>
-        <property name="username" category="input" label="username" required="true" />
-        <property name="password" password="true" category="input" required="true" />
-        
-        <property name="releaseId" category="input" label="Release Id" required="true" />
+        <property name="username" category="input" label="username" required="true"/>
+        <property name="password" password="true" category="input" required="true"/>
+
+        <property name="releaseId" category="input" label="Release Id" required="true"/>
         <property name="asynch" category="input" label="Asynch" required="true" kind="boolean"/>
         <property name="timeout" category="input" label="Timeout (in seconds)" required="true" kind="integer"/>
 
-        <property name="releaseDescription" category="output"/> 
+        <property name="releaseDescription" category="output"/>
         <property name="releaseResult" category="output"/>
     </type>
 
     <type type="nolio.ReleaseStatus" extends="xlrelease.PythonScript">
-        <property name="scriptLocation" default="nolio/ReleaseStatus.py" hidden="true" />
-        <property name="iconLocation" default="nolio/nolio.png" hidden="true" />
+        <property name="scriptLocation" default="nolio/ReleaseStatus.py" hidden="true"/>
+        <property name="iconLocation" default="nolio/nolio.png" hidden="true"/>
 
         <property name="nolioServer" category="input" label="Server" referenced-type="nolio.Server" kind="ci"/>
-        <property name="username" category="input" label="username" required="true" />
-        <property name="password" password="true" category="input" required="true" />
-        
-        <property name="releaseId" category="input" label="Release Id" required="true" />
-        <property name="version2" category="input" label="Version 2" kind="boolean" default="false" />
-        <property name="pollingInterval" category="input" label="Polling Interval" required="true" kind="integer" description="Polling interval in seconds to check release status. By default '60'."/>
-        <property name="numberOfTrials" category="input" label="Retry Count" required="true" kind="integer" description="Number of times to retry check for release status. '0' value disables retry counter. By default '0'."/>
+        <property name="username" category="input" label="username" required="true"/>
+        <property name="password" password="true" category="input" required="true"/>
 
-        <property name="releaseStatus" category="output"/> 
-        <property name="releaseDescription" category="output"/> 
+        <property name="releaseId" category="input" label="Release Id" required="true"/>
+        <property name="version2" category="input" label="Version 2" kind="boolean" default="false"/>
+        <property name="pollingInterval" category="input" label="Polling Interval" required="true" kind="integer"
+                  description="Polling interval in seconds to check release status. By default '60'."/>
+        <property name="numberOfTrials" category="input" label="Retry Count" required="true" kind="integer"
+                  description="Number of times to retry check for release status. '0' value disables retry counter. By default '0'."/>
+
+        <property name="releaseStatus" category="output"/>
+        <property name="releaseDescription" category="output"/>
         <property name="releaseResult" category="output"/>
     </type>
 
-    <type type="nolio.Server" extends="configuration.HttpConnection"/>
+    <type type="nolio.Server" extends="configuration.HttpConnection">
+        <property name="version" default="6.6"/>
+    </type>
+
+    <type type="nolio.runDeployment" extends="xlrelease.PythonScript">
+        <property name="scriptLocation" default="nolio/runDeployment.py" hidden="true"/>
+        <property name="iconLocation" default="nolio/nolio.png" hidden="true"/>
+
+        <property name="nolioServer" category="input" label="Server" referenced-type="nolio.Server" kind="ci"/>
+
+        <property name="username" category="input" label="username" required="false"/>
+        <property name="password" password="true" category="input" required="false"/>
+
+        <property name="application" category="input" required="true"/>
+        <property name="project" category="input" required="true"/>
+        <property name="deploymentPlan" category="input" required="true"/>
+        <property name="build" category="input" required="true"/>
+        <property name="environment" category="input" required="true"/>
+
+        <property name="deploymentId" category="output"/>
+        <property name="deploymentDescription" category="output"/>
+        <property name="deploymentResult" category="output" kind="boolean"/>
+    </type>
 
 
 </synthetic>

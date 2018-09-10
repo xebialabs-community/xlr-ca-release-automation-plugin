@@ -1,2 +1,11 @@
 .gradle
 build
+target
+.idea
+.settings
+.project
+*.iml
+dependency-reduced-pom.xml
+xl-release-8.2.0-server
+out
+

@@ -40,5 +40,11 @@ def runDeployment(versionId):
     return getFile("runDeployment-1.json")
 
 
+@app.route('/datamanagement/a/api/<versionId>//deployment-state/<deploymentId>', methods=['GET'])
+def deploymentState(deploymentId):
+    app.logger.info('state of deployment  %s' % deploymentId)
+    return getFile("deploymentState-%s.json" % deploymentId)
+
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,24 @@
+{
+  "deploymentErrors": [
+    "string"
+  ],
+  "deploymentId": 81,
+  "deploymentName": "Successfully created deployment [run_deployment31] with id [81] on environment [env3] with id [5]",
+  "deploymentStages": [
+    {
+      "name": "string",
+      "state": "string",
+      "steps": [
+        {
+          "id": 0,
+          "name": "string",
+          "state": "string"
+        }
+      ]
+    }
+  ],
+  "deploymentState": "string",
+  "deploymentStateText": "string",
+  "description": "string",
+  "result": true
+}

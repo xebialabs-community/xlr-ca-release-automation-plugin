@@ -6,7 +6,7 @@ notifications:
 deploy:
   provider: releases
   api_key:
-    secure: HkiGKhKcqT96idPXzSwAt6NNv/ZEXSioq1uvVCOqPlSytk2nyAiYMw45L4I/Ha543kyFHANfD2AiiFzU8hzZfqdaPRMT5hU+gG6tKf12mZn/jXkpvS/z5Uni2Awtb/eE/rixb46hcilBpVgjKon3ufVAmmZnNLdL5+Rj+yG+wqo=
+    secure: JYXIimk8I1m4zIFo6Ndxxkd+29ojOCxqWOOpmlN0d9FQ6ejZ6pDPo4aGzOKqQOeDyO5dbOB4ttfheZYqSvenxF1lQ+QEkYsRoAE+rfwHxs+d9f8bU0utUHqc2b5thVKe+Vtsyn/PPOYzdN3QRQ8jjNsOdS4TCYit0XpwedRy5tA=
   file_glob: true
   file: build/libs/*
   skip_cleanup: true
@@ -14,4 +14,3 @@ deploy:
     all_branches: true
     tags: true
     repo: xebialabs-community/xlr-ca-release-automation-plugin
-

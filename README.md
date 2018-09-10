@@ -14,3 +14,4 @@ The xlr-calisa-plugin is a XL Release plugin that allows to execute a deployment
 + Run Template
 + Run Release
 + Check Release Status
++ Run Deployment

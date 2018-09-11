@@ -1,0 +1,63 @@
+{
+  "deploymentName": "PetPortal release-1.6.27",
+  "deploymentStateText": "Initialization Failed",
+  "deploymentStages": [
+    {
+      "steps": [
+        {
+          "id": "88077",
+          "state": "Canceled",
+          "name": "[Rancher] Deployment"
+        }
+      ],
+      "state": "Canceled",
+      "name": "Deployment"
+    },
+    {
+      "steps": [],
+      "state": "Canceled",
+      "name": "Distribute-Execution-Server"
+    },
+    {
+      "steps": [
+        {
+          "id": "88076",
+          "state": "Fail",
+          "name": "[Rancher][Release] PreDeployment"
+        }
+      ],
+      "state": "Failed",
+      "name": "Initialization"
+    },
+    {
+      "steps": [
+        {
+          "id": "88078",
+          "state": "Canceled",
+          "name": "[Rancher] Tag configuration"
+        },
+        {
+          "id": "88079",
+          "state": "Canceled",
+          "name": "[Rancher] Delete preDeployment folder"
+        }
+      ],
+      "state": "Canceled",
+      "name": "Post-Deployment"
+    },
+    {
+      "steps": [],
+      "state": "Canceled",
+      "name": "Validation"
+    },
+    {
+      "steps": [],
+      "state": "Canceled",
+      "name": "Distribute-Agent"
+    }
+  ],
+  "deploymentState": "Canceled",
+  "deploymentId": "22940",
+  "result": true,
+  "description": "100% Initialization Failed"
+}

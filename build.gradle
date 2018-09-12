@@ -9,8 +9,6 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 
-version="1.3.0"
-
 if (!project.hasProperty('release.scope')) {
     project.ext['release.scope'] = 'patch'
 }
@@ -26,4 +24,3 @@ license {
     ext.name = 'XEBIALABS'
     exclude "**/*.json"
 }
-

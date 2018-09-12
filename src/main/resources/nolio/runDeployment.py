@@ -15,6 +15,7 @@
 #
 
 import sys, string, time
+import datetime
 import json
 
 if nolioServer is None:
@@ -23,7 +24,8 @@ if nolioServer is None:
 
 nolioUrl = nolioServer['url']
 
-content = {"deployment": "Run Deployment %s %s" % (application, environment),
+content = {"deployment": "Run Deployment %s %s %s" % (
+application, environment, datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')),
            "application": application,
            "environments": [environment],
            "deploymentPlan": deploymentPlan,
@@ -31,6 +33,7 @@ content = {"deployment": "Run Deployment %s %s" % (application, environment),
            "project": project
            }
 
+print "* Deployment is {0}".format(content['deployment'])
 print "* Sending content {0}".format(json.dumps(content))
 
 context = '/datamanagement/a/api/{0}/run-deployments'.format(nolioServer['version'])

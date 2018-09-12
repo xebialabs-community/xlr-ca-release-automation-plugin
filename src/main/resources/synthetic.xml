@@ -107,7 +107,7 @@
     </type>
 
     <type type="nolio.Server" extends="configuration.HttpConnection">
-        <property name="version" default="6.6"/>
+        <property name="version" default="V6"/>
     </type>
 
     <type type="nolio.runDeployment" extends="xlrelease.PythonScript">

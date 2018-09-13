@@ -14,8 +14,7 @@
 # FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 #
 
-import sys, string, time
-import datetime
+import sys
 import json
 
 if nolioServer is None:
@@ -24,41 +23,32 @@ if nolioServer is None:
 
 nolioUrl = nolioServer['url']
 
-content = {"deployment": "Run Deployment %s %s %s" % (
-    application, environment, datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')),
-           "application": application,
-           "environments": [environment],
-           "deploymentPlan": deploymentPlan,
-           "build": build,
-           "project": project
-           }
-
-print "* Deployment is {0}".format(content['deployment'])
-print "* Sending content {0}".format(json.dumps(content))
-
-context = '/datamanagement/a/api/{0}/run-deployments'.format(nolioServer['version'])
+context = '/datamanagement/a/api/{0}/deployment-state/{1}'.format(nolioServer['version'], deploymentId)
 print "* Context is {0}".format(context)
 
 request = HttpRequest(nolioServer, username, password)
-response = request.post(context, json.dumps(content), contentType='application/json')
+response = request.get(context, contentType='application/json')
 
-if response.isSuccessful():
-    print "* status {0}".format(response.status)
-    # print "* response {0}".format(response.response)
-
-    data = json.loads(response.response)[0]
-    deploymentId = data.get('id')
-    deploymentDescription = data.get('description')
-    deploymentResult = data.get('result')
-    if not deploymentResult:
-        print "Failed to create release in Nolio at %s." % nolioUrl
-        print "Received description: {0}".format(deploymentDescription)
-        response.errorDump()
-        sys.exit(1)
-    print "Created #%s in Nolio at %s." % (deploymentId, nolioUrl)
-    task.setStatusLine("Deployment '{0}' : Started".format(deploymentId))
-    task.schedule("nolio/stateDeployment.py", 5)
-else:
-    print "Failed to create release in Nolio at %s." % nolioUrl
+if not response.isSuccessful():
+    print "* Failed to get the deployment state" % deploymentId
     response.errorDump()
     sys.exit(1)
+
+data = json.loads(response.response)
+deploymentState = data.get('deploymentState')
+deploymentStateText = data.get('deploymentStateText')
+deploymentResult = data.get('result')
+print "* '{0}' / '{1}'".format(deploymentStateText, data.get('description'))
+
+task.setStatusLine("Deployment '{0}': {1}".format(deploymentId, deploymentState))
+if deploymentState == "Active":
+    task.schedule("nolio/stateDeployment.py", 5)
+elif deploymentState == "Succeeded":
+    print "* DONE"
+    sys.exit(0)
+elif deploymentState == "Failed" or deploymentState == "Canceled":
+    print "* Failure"
+    sys.exit(1);
+else:
+    print "* Unmanaged state '{0}'".format(deploymentState)
+    sys.exit(2)

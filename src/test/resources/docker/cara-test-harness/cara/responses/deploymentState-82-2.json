@@ -1,0 +1,75 @@
+{
+  "deploymentName": "PetPortal deploy-3.0.0.",
+  "deploymentState": "Active",
+  "deploymentStateText": "Pending Validation",
+  "deploymentStages": [
+    {
+      "steps": [
+        {
+          "id": "79169",
+          "state": "Success",
+          "name": "[Rancher][Release] PreDeployment"
+        }
+      ],
+      "state": "Succeeded",
+      "name": "Initialization"
+    },
+    {
+      "steps": [],
+      "state": "Pending",
+      "name": "Validation"
+    },
+    {
+      "steps": [
+        {
+          "id": "79172",
+          "state": "New",
+          "name": "[Rancher][Spring] Health check"
+        },
+        {
+          "id": "79171",
+          "state": "New",
+          "name": "[Rancher] Tag configuration"
+        },
+        {
+          "id": "79173",
+          "state": "New",
+          "name": "[Rancher] Delete preDeployment folder"
+        }
+      ],
+      "state": "Pending",
+      "name": "Post-Deployment"
+    },
+    {
+      "steps": [
+        {
+          "id": "79170",
+          "state": "New",
+          "name": "[Rancher] Deployment"
+        }
+      ],
+      "state": "Pending",
+      "name": "Deployment"
+    },
+    {
+      "steps": [],
+      "state": "Pending",
+      "name": "Distribute-Agent"
+    },
+    {
+      "steps": [],
+      "state": "Pending",
+      "name": "Distribute-Execution-Server"
+    }
+  ],
+  "deploymentErrors": [
+    "No servers were found for any server type of [Spring] Health check.",
+    "No servers were found for any server type of [Spring] Health check.",
+    "No servers were found for any server type of Delete preDeployment folder.",
+    "No servers were found for any server type of [Tomcat] Deployment."
+  ],
+  "deploymentId": "82",
+  "result": true,
+  "description": "0% Pending Validation (With errors)"
+}
+

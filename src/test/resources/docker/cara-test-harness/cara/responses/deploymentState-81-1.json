@@ -1,0 +1,56 @@
+{
+  "deploymentName": "petportal_nom_2018-09-08-13:48",
+  "deploymentState": "Active",
+  "deploymentStateText": "Pending Artifacts Distribution",
+  "deploymentStages": [
+    {
+      "steps": [
+        {
+          "id": "88296",
+          "state": "Success",
+          "name": "Pre-Deployment - Release"
+        }
+      ],
+      "state": "Succeeded",
+      "name": "Initialization"
+    },
+    {
+      "steps": [],
+      "state": "Succeeded",
+      "name": "Validation"
+    },
+    {
+      "steps": [],
+      "state": "Pending",
+      "name": "Post-Deployment"
+    },
+    {
+      "steps": [
+        {
+          "id": "88297",
+          "state": "New",
+          "name": "aem"
+        }
+      ],
+      "state": "Pending",
+      "name": "Deployment"
+    },
+    {
+      "steps": [],
+      "state": "Pending",
+      "name": "Distribute-Agent"
+    },
+    {
+      "steps": [],
+      "state": "Pending",
+      "name": "Distribute-Execution-Server"
+    }
+  ],
+  "deploymentErrors": [
+    "No servers were found for any server type of [Spring] Health check.",
+    "No servers were found for any server type of [Spring] Health check."
+  ],
+  "deploymentId": "81",
+  "result": true,
+  "description": "0% Pending Artifacts Distribution (With errors)"
+}

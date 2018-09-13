@@ -1,0 +1,68 @@
+{
+  "deploymentName": "PetPortal-1.0.0-SNAPSHOT-0ec4412b4475ca8c310c5d34c3665f641b935fe5-1536647371488",
+  "deploymentStateText": "Succeeded",
+  "deploymentStages": [
+    {
+      "steps": [
+        {
+          "id": "88874",
+          "state": "Success",
+          "name": "Deployment"
+        },
+        {
+          "id": "88875",
+          "state": "Success",
+          "name": "Delete deployment folder"
+        }
+      ],
+      "state": "Succeeded",
+      "name": "Deployment"
+    },
+    {
+      "steps": [],
+      "state": "Succeeded",
+      "name": "Distribute-Execution-Server"
+    },
+    {
+      "steps": [
+        {
+          "id": "88873",
+          "state": "Success",
+          "name": "Snapshot - PreDeployment"
+        }
+      ],
+      "state": "Succeeded",
+      "name": "Initialization"
+    },
+    {
+      "steps": [
+        {
+          "id": "88876",
+          "state": "Success",
+          "name": "Rancher - Angular - Health check"
+        },
+        {
+          "id": "88877",
+          "state": "Success",
+          "name": "Rancher - Delete PreDeployment folder"
+        }
+      ],
+      "state": "Succeeded",
+      "name": "Post-Deployment"
+    },
+    {
+      "steps": [],
+      "state": "Succeeded",
+      "name": "Validation"
+    },
+    {
+      "steps": [],
+      "state": "Succeeded",
+      "name": "Distribute-Agent"
+    }
+  ],
+  "deploymentState": "Succeeded",
+  "deploymentId": "23038",
+  "result": true,
+  "description": "100% Succeeded"
+}

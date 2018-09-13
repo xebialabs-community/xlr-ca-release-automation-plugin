@@ -22,6 +22,8 @@ import json
 
 app = Flask(__name__)
 
+_api_deployment_state = {}
+
 
 def getFile(fileName):
     filePath = "/cara/responses/%s" % fileName
@@ -43,13 +45,21 @@ def runDeployment(versionId):
     data = request.data
     dataDict = json.loads(data)
     app.logger.info("dataDict %s" % dataDict)
-    return getFile("runDeployment-1.json")
+    if "DEV" in dataDict['deployment']:
+        id = '81'
+    else:
+        id = '82'
+
+    _api_deployment_state[id] = 0
+    return getFile("runDeployment-%s.json" % id)
 
 
-@app.route('/datamanagement/a/api/<versionId>//deployment-state/<deploymentId>', methods=['GET'])
-def deploymentState(deploymentId):
-    app.logger.info('state of deployment  %s' % deploymentId)
-    return getFile("deploymentState-%s.json" % deploymentId)
+@app.route('/datamanagement/a/api/<versionId>/deployment-state/<deploymentId>', methods=['GET'])
+def deploymentState(versionId, deploymentId):
+    app.logger.info('deployment state for %s' % versionId)
+    _api_deployment_state[deploymentId] = _api_deployment_state[deploymentId] + 1
+    app.logger.info('state of deployment  %s %s' % (deploymentId, _api_deployment_state[deploymentId]))
+    return getFile("deploymentState-{0}-{1}.json".format(deploymentId, _api_deployment_state[deploymentId]))
 
 
 if __name__ == '__main__':

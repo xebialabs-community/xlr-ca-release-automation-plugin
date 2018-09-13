@@ -128,6 +128,8 @@
         <property name="deploymentId" category="output"/>
         <property name="deploymentDescription" category="output"/>
         <property name="deploymentResult" category="output" kind="boolean"/>
+        <property name="deploymentState" category="output"/>
+        <property name="deploymentStateText" category="output"/>
     </type>
 
 

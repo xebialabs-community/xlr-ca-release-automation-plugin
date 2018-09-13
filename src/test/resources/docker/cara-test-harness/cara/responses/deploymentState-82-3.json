@@ -1,0 +1,73 @@
+{
+  "deploymentName": "PetPortal - 2.1.4_PROD",
+  "deploymentStateText": "Failed",
+  "deploymentStages": [
+    {
+      "steps": [
+        {
+          "id": "88544",
+          "state": "Fail",
+          "name": "Rancher deployment"
+        },
+        {
+          "id": "88545",
+          "state": "Canceled",
+          "name": "Delete deployment folder"
+        }
+      ],
+      "state": "Failed",
+      "name": "Deployment"
+    },
+    {
+      "steps": [],
+      "state": "Succeeded",
+      "name": "Distribute-Execution-Server"
+    },
+    {
+      "steps": [
+        {
+          "id": "88543",
+          "state": "Success",
+          "name": "Rancher - Release - PreDeployment"
+        }
+      ],
+      "state": "Succeeded",
+      "name": "Initialization"
+    },
+    {
+      "steps": [
+        {
+          "id": "88546",
+          "state": "Canceled",
+          "name": "Spring Health Check"
+        },
+        {
+          "id": "88548",
+          "state": "Canceled",
+          "name": "Rancher - Tag configuration"
+        },
+        {
+          "id": "88547",
+          "state": "Canceled",
+          "name": "Rancher - Delete preDeployment folder"
+        }
+      ],
+      "state": "Canceled",
+      "name": "Post-Deployment"
+    },
+    {
+      "steps": [],
+      "state": "Succeeded",
+      "name": "Validation"
+    },
+    {
+      "steps": [],
+      "state": "Succeeded",
+      "name": "Distribute-Agent"
+    }
+  ],
+  "deploymentState": "Failed",
+  "deploymentId": "82",
+  "result": true,
+  "description": "100% Failed"
+}

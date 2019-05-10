@@ -11,6 +11,5 @@ deploy:
     tags: true
     repo: xebialabs-community/xlr-ca-release-automation-plugin
 notifications:
-  hipchat:
-    rooms:
-      secure: HhStAYJ3Txaws4rDer5K/QMh/5L8Qkv2jxQ1F4eAeV0aq+ZcahQZMdU/gFEiiOoyKRFlp6NOgwLPqttJ+fmiWYXOYfCpkQGtBbkkS4+GJg2b7+Z11yyyaZwCl3MEnfk6OgKA/C4vyYm33wfN0Viwhnq7y1X2W2fTCPAe8CnypRM=
+  slack:
+    secure: CoguCFUmIKBYWmUl2kFPqT+6dvZBHZfYpfGDGmH1WPplmwxtMOzGtkHyy02gFyVxCr4HtQioBrz8MMY5XaOufDGyrFlOQK+bm1WnjlrStBthsigNE2Hm1lkfUNjT959SFfiesjEWymjrp09k/JVXaVKRdh2cbC2qW9EYflXYEaA=

@@ -44,9 +44,10 @@ response = request.post(context, json.dumps(content), contentType='application/j
 
 if response.isSuccessful():
     print "* status {0}".format(response.status)
-    # print "* response {0}".format(response.response)
+    print "* response {0}".format(response.response)
 
     data = json.loads(response.response)[0]
+
     deploymentId = data.get('id')
     deploymentDescription = data.get('description')
     deploymentResult = data.get('result')

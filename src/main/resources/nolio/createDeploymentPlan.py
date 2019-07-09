@@ -24,19 +24,23 @@ if nolioServer is None:
 
 nolioUrl = nolioServer['url']
 
-content = {"deployment": "Run Deployment %s %s %s" % (
-    application, environment, datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')),
-           "application": application,
-           "environments": [environment],
-           "deploymentPlan": deploymentPlan,
-           "build": build,
-           "project": project
-           }
+deploymentPlan = "{project}_{uniqueid}".format(project=project,
+                                               uniqueid=datetime.datetime.fromtimestamp(time.time()).strftime(
+                                                   '%Y-%m-%d_%H:%M:%S'))
 
-print "* Deployment is {0}".format(content['deployment'])
+content = {
+    "application": application,
+    "build": build,
+    "deploymentPlan": deploymentPlan,
+    "deploymentTemplate": deploymentTemplate,
+    "project": project,
+    "templateCategory": templateCategory,
+    "manifest": manifest
+}
+
 print "* Sending content {0}".format(json.dumps(content))
 
-context = '/datamanagement/a/api/{0}/run-deployments'.format(nolioServer['version'])
+context = '/datamanagement/a/api/{0}/create-deployment-plan'.format(nolioServer['version'])
 print "* Context is {0}".format(context)
 
 request = HttpRequest(nolioServer, username, password)
@@ -47,19 +51,18 @@ if response.isSuccessful():
     print "* response {0}".format(response.response)
 
     json_response = json.loads(response.response)
-    data = json_response[0]
-
-    deploymentId = data.get('id')
-    deploymentDescription = data.get('description')
-    deploymentResult = data.get('result')
-    if not deploymentResult:
+    data = json_response
+    result = data.get('result')
+    if result == "false":
+        description = data.get('description')
+        print description
         print "Failed to create release in Nolio at %s." % nolioUrl
-        print "Received description: {0}".format(deploymentDescription)
         response.errorDump()
         sys.exit(1)
-    print "Created #%s in Nolio at %s." % (deploymentId, nolioUrl)
-    task.setStatusLine("Deployment '{0}' : Started".format(deploymentId))
-    task.schedule("nolio/stateDeployment.py", 5)
+    else:
+        deploymentPlan = data.get('deploymentPlan')
+        print "successfully create the deployment plan " + deploymentPlan
+        deploymentPlanId = data.get('deploymentPlanId')
 else:
     print "Failed to create release in Nolio at %s." % nolioUrl
     response.errorDump()

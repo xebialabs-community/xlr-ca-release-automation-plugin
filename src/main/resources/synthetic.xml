@@ -132,5 +132,25 @@
         <property name="deploymentStateText" category="output"/>
     </type>
 
+    <type type="nolio.createDeploymentPlan" extends="xlrelease.PythonScript">
+        <property name="scriptLocation" default="nolio/createDeploymentPlan.py" hidden="true"/>
+        <property name="iconLocation" default="nolio/nolio.png" hidden="true"/>
+
+        <property name="nolioServer" category="input" label="Server" referenced-type="nolio.Server" kind="ci"/>
+
+        <property name="username" category="input" label="username" required="false"/>
+        <property name="password" password="true" category="input" required="false"/>
+
+        <property name="application" category="input" required="true"/>
+        <property name="project" category="input" required="true"/>
+        <property name="build" category="input" required="true"/>
+        <property name="deploymentTemplate" category="input" required="true"/>
+        <property name="templateCategory" category="input" required="true"/>
+        <property name="manifest" category="input" required="false" size="large"/>
+
+        <property name="deploymentPlan" category="output" />
+        <property name="deploymentPlanId" category="output"/>
+    </type>
+
 
 </synthetic>
